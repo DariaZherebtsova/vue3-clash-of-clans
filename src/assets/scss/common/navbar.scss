@@ -42,7 +42,6 @@
   &.isActive,
   &.router-link-active,
   &.router-link-exact-active {
-    color: $purple-color;
-    border-bottom: 1px solid $purple-color-100;
+    text-decoration: underline;
   }
 }

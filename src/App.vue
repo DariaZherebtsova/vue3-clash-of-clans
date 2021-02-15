@@ -3,7 +3,7 @@
     <Header />
     <div class="wrapper-content">
       <div class="container">
-        <h1>Hello world</h1>
+        <router-view />
       </div>
     </div>
     <Footer />
