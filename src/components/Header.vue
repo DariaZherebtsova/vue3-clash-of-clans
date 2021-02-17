@@ -6,9 +6,7 @@
           <a class="navbar-logo" href="/">{{ title }}</a>
           <ul class="navbar-list">
             <li class="navbar-item" v-for="link in links" :key="link.alias">
-              <a class="navbar-link" :href="link.url">{{
-                link.title
-              }}</a>
+              <a class="navbar-link" :href="link.url">{{ link.title }}</a>
             </li>
           </ul>
         </div>
@@ -18,22 +16,14 @@
 </template>
 
 <script>
+import {app, links} from "@/_config";
+
 export default {
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    links: {
-      type: Array,
-      default: [
-        {
-          title: "Home",
-          alias: "home",
-          url: "/",
-        },
-      ],
-    },
+  data() {
+    return {
+      title: app.title,
+      links: links,
+    };
   },
 };
 </script>
