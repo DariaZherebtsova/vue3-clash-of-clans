@@ -9,8 +9,8 @@
         </li>
       </ul>
       <!-- link to course -->
-      <ul class="navbar-list" style="margin-top: 14px;">
-        <li class="navbar-item" style="opacity: 0.6; font-size: 14px;">
+      <ul class="navbar-list" style="margin-top: 14px">
+        <li class="navbar-item" style="opacity: 0.6; font-size: 14px">
           <a
             href="https://tocode.ru/courses/vuejs-3-s-nulya-do-rezultata/"
             class="navbar-link"
@@ -23,13 +23,13 @@
 </template>
 
 <script>
-import {links} from "@/_config";
+import { links } from '@/_config'
 
 export default {
   data() {
     return {
-      links: links,
-    };
-  },
-};
+      links: links
+    }
+  }
+}
 </script>
