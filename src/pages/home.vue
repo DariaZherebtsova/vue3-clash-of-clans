@@ -1,27 +1,30 @@
 <template>
-  <div class="md-body">
-    <h1>hello home</h1>
-    <p>Edit me</p>
-    <div class="card__wrapper" v-for="item in items" :key="item.id">
-      <Card 
-        :name="`${item.lvl} lvl`"
-        :title="item.title"
-        :imgUrl="item.img"
-        :link="`/${item.alias}`"
-      >
-        <template v-slot:body>
-          {{ item.descr }}
-        </template>
-        <template v-slot:footer>
-          <div class="card-stats">
-            <div v-for="(stat, index) in item.info" :key="index" class="one-third">
-              <div class="stat-value">{{stat.value}}</div>
-              <div class="stat">{{stat.title}}</div>
+  <div>
+    <carousel :settings="settings">
+      <slide class="card__wrapper" v-for="item in items" :key="item.id">
+        <Card 
+          :name="`${item.lvl} lvl`"
+          :title="item.title"
+          :imgUrl="item.img"
+          :link="`/${item.alias}`"
+        >
+          <template v-slot:body>
+            {{ item.descr }}
+          </template>
+          <template v-slot:footer>
+            <div class="card-stats">
+              <div v-for="(stat, index) in item.info" :key="index" class="one-third">
+                <div class="stat-value">{{stat.value}}</div>
+                <div class="stat">{{stat.title}}</div>
+              </div>
             </div>
-          </div>
-        </template>
-      </Card>
-    </div>
+          </template>
+        </Card>
+      </slide>
+      <template #addons>
+        <navigation />
+      </template>
+    </carousel>
   </div>
 </template>
 
@@ -29,11 +32,35 @@
 import Card from '@/components/UI/Card';
 import items from '@/seeders/items';
 
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+
 export default {
-  components: {Card},
+  components: {
+    Card,
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
+  },
   data() {
     return {
       items: items,
+      settings: {
+        itemsToShow: 2,
+        wrapAround: true,
+        breakpoints: {
+          300: {
+            itemsToShow: 1,
+          },
+          700: {
+            itemsToShow: 2,
+          },
+          900: {
+            itemsToShow: 2,
+          },
+        }
+      },
     }
   },
 }
