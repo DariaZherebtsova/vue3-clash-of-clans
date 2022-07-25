@@ -10,7 +10,6 @@
         <router-link to="/" class="btn btnPrimary">Back to home</router-link>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -30,7 +29,12 @@ export default {
 
   created() {
     const alias = this.$route.params.itemAlias;
-    this.item = items.find( el => el.alias === alias);
+    const item = items.find( el => el.alias === alias);
+    if (!item) {
+      this.$router.push('/404')
+    } else {
+      this.item = item;
+    }
   },
   
 }
