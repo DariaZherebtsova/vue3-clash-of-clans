@@ -5,12 +5,7 @@
       <h1 class="title" style="color: #fff;">{{ item.title }}</h1>
       <p>{{ item.descr }}</p>
 
-      <div class="card-stats">
-        <div v-for="(stat, index) in item.info" :key="index" class="one-third">
-          <div class="stat-value">{{stat.value}}</div>
-          <div class="stat">{{stat.title}}</div>
-        </div>
-      </div>
+      <Stats :info="item.info" />
       <div>
         <router-link to="/" class="btn btnPrimary">Back to home</router-link>
       </div>
@@ -21,8 +16,12 @@
 
 <script>
 import items from '@/seeders/items';
+import Stats from '@/components/UI/Stats';
 
 export default {
+  components: {
+    Stats,
+  },
   data() {
     return {
       item: null
@@ -43,7 +42,7 @@ export default {
 .wrapper-person {
   text-align: center;
 
-  .card-stats {
+  .stats {
     margin: 30px 0;
     border-radius: 14px;
   }
